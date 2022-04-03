@@ -4,5 +4,6 @@ export default class QuestionModel extends Model {
   @attr identifier;
   @attr name;
   @attr description;
-  @attr category_name_hyphenated;
+  @attr questions;
+  // @attr category_name_hyphenated;
 }

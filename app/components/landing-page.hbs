@@ -1,0 +1,118 @@
+<div
+  class='col-lg-6 col-md-12 col-sm-12 image-column'
+  {{did-insert this.onDomRender}}
+  {{will-destroy this.onDestroy}}
+>
+  {{! template-lint-disable no-invalid-interactive}}
+  <div
+    id='image-block-id'
+    class='image-blok__wrapper'
+    {{on 'mouseover' this.onMouseover}}
+    {{on 'mouseout' this.onMouseout}}
+  >
+    <div class='image-block__wrapper-box'>
+      <div class='pattern-box'>
+        <div class='pattern-dot-left-top'>
+        </div>
+        <div class='pattern-dot-right-bottom'>
+        </div>
+
+        {{! template-lint-disable no-inline-styles}}
+        <figure
+          id='figure-1'
+          class='image image-left paroller'
+          style='transform: unset; transition: transform 0.6s cubic-bezier(0, 0, 0,1) 0s; will-change: transform;'
+        >
+          <img src='../assets/images/content-img-1.jpeg' alt='image1' />
+        </figure>
+        <figure
+          id='figure-2'
+          class='image image-right paroller-2'
+          style='transform: unset; transition: transform 0.6s
+												cubic-bezier(0, 0, 0, 1) 0s; will-change: transform;'
+        >
+          <img src='../assets/images/content-img-2.jpeg' alt='image2' />
+        </figure>
+        <div class='clients-box'>
+          <figure class='clients-thumb'>
+            <img src='../assets/images/content-img-3.jpeg' alt='image3' />
+          </figure>
+          <h3>
+            4.2k
+          </h3>
+          <span>
+            Satisfied Clients
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='col-lg-6 col-md-12 col-sm-12 content-column'>
+  <div class='content-block__wrapper'>
+    <div class='content-block__wrapper-box'>
+      <div class='upper-box'>
+        <div class='upper-box-title'>
+          <h2>
+            {{this.getQuestion.name}}
+          </h2>
+        </div>
+        <div class='upper-box-description'>
+          <p>
+            {{this.getQuestion.description}}
+          </p>
+        </div>
+      </div>
+
+      <div class='lower-box'>
+        <div class='lower-box__label-wrapper'>
+          <span class='lower-box__label-wrapper-icon'>
+            <span
+              data-qa='icon'
+              aria-hidden='true'
+              class='Boundary-sc-__sc-184gmm6-0 jKKPCe'
+            >
+              <svg width='12' height='12' viewBox='0 0 12 12'>
+                <path
+                  fill-rule='evenodd'
+                  clip-rule='evenodd'
+                  d='M12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12C9.31371 12 12 9.31371 12 6ZM5.99033 2.59455C5.93953 2.31465 5.69455 2.1024 5.4 2.1024C5.06863 2.1024 4.8 2.37103 4.8 2.7024V6.6L4.80967 6.70785C4.86047 6.98775 5.10545 7.2 5.4 7.2H7.8L7.90785 7.19033C8.18775 7.13953 8.4 6.89455 8.4 6.6C8.4 6.26863 8.13137 6 7.8 6H6V2.7024L5.99033 2.59455Z'
+                ></path>
+              </svg>
+            </span>
+          </span>
+          <div class='lower-box__label-wrapper-text'>
+            Takes 2 mins
+          </div>
+        </div>
+
+        <div class='lower-box__action-wrapper'>
+          <div class='action-buttons'>
+            <div class='action-buttons__submit-wrapper'>
+              <button tabindex='0' class='' type='button'>
+                <span class='button__text_wrappers'>
+                  <span class='button__text_wrapper'>
+                    <span class='button__text_wrapper-content'>
+                      Let's begin!
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div aria-hidden='true' class='action-helper__wrapper-content'>
+                <div class='content-block'>
+                  <div class='text'>
+                    press
+                    <strong>
+                      Enter ↵
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='scrollElement'></div>

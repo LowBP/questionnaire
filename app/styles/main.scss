@@ -1,0 +1,164 @@
+@import "app-variables";
+
+/***
+
+====================================================================
+	Global Settings
+====================================================================
+
+***/
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/***
+
+  ====================================================================
+	Global Settings
+  ====================================================================
+
+   ***/
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+
+  align-items: center;
+
+  // overflow: hidden;
+  font-size: 17px;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: $font-family-roboto;
+  -webkit-font-smoothing: antialiased;
+  color: rgb(70, 70, 102);
+  background: #fff;
+}
+
+.body--display-block {
+  display: block;
+
+  @media (min-width: 2160px) {
+    display: flex;
+    #questn-page-id {
+      width: 100%;
+    }
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-lg-6,
+.col-md-12,
+.col-sm-12 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 576px) {
+  .col-sm-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col-lg-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .col-lg-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  transition-delay: 0.1s;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.7s;
+  transition-property: all;
+}
+
+h2 {
+  position: relative;
+  font-family: $font-family-roboto;
+  font-weight: 400;
+  color: #00224f;
+  margin: 0px;
+  transition: all 500ms ease;
+}
+
+p {
+  position: relative;
+  font-family: $font-family-roboto;
+  color: #888888;
+  font-weight: 400;
+  margin: 0px;
+  transition: all 500ms ease;
+}
+
+main {
+  display: block;
+}
+
+.pattern-dot--size {
+  top: 98px !important;
+  right: 188px !important;
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.page-bottom-left-circle {
+  position: absolute;
+  bottom: 67px;
+  right: auto;
+  background: #f7f8f9;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  z-index: 1;
+  -webkit-animation: animationFade 5s infinite linear;
+  animation: animationFade 5s infinite linear;
+  left: -72px;
+}
