@@ -1,0 +1,62 @@
+{{! template-lint-disable}}
+<div class='radiogroup' {{will-destroy this.onDestroy}}>
+  <div class='choice__lists' id='choice_list_id' {{did-insert this.onDomInit}}>
+    {{#each @data.choices as |item index|}}
+      <div
+        class='radio-list'
+        ascii={{ascii index}}
+        role='radio'
+        tabindex='0'
+        id='itemId_{{index}}'
+        selected='{{item.selected}}'
+        {{on 'click' (fn this.onClickSelectOption item index)}}
+        {{on 'keydown' (fn this.onKeyDown item index)}}
+      >
+        <div class='radio-list__wrapper'>
+          <div
+            class={{
+              if item.selected 'radio-list__item isSelected' 'radio-list__item'
+            }}
+          >
+            <div class='shortcut__wrapper'>
+              <div aria-hidden='true' class='key-helper__wrapper'>
+                <div class='key-helper__hint-wrapper'>
+                  <div class='key-helper__hint-wrapper--block'>
+                    <span class='key-hint'>
+                      Key
+                    </span>
+                    <span class='key-letter'>
+                      {{ascii index}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='choice__wrapper'>
+              <div class='choice__wrapper--text'>
+                {{item.label}}
+              </div>
+            </div>
+
+            <div class='checkbox__wrapper'>
+              <span class='checkbox__icon'>
+                <svg height='13' width='16'>
+                  <path
+                    d='M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z'
+                  ></path>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+{{#if this.getRequiredFieldStatus}}
+  <div class='select__error-info'>
+    <p class='error-message'>
+      *Required
+    </p>
+  </div>
+{{/if}}

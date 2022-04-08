@@ -1,0 +1,58 @@
+.input__wrapper {
+  input {
+    display: block;
+    width: 100%;
+    font-family: inherit;
+    color: rgb(35, 35, 35);
+    padding: 0px 0px 8px;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    appearance: none;
+    background-image: none;
+    background-position: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    transform: translateZ(0px);
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    line-height: unset;
+    -webkit-text-fill-color: rgb(35, 35, 35);
+    animation: 1ms ease 0s 1 normal none running native-autofill-in;
+    transition: background-color 1e8s ease 0s, box-shadow 0.1s ease-out 0s;
+    box-shadow: #fcb9b2 0px 1px;
+    background-color: transparent !important;
+
+    &:focus {
+      box-shadow: #faa69c 0px 2px;
+    }
+    &::placeholder {
+      opacity: 0.7;
+      font-size: 20px;
+      color: gray;
+    }
+  }
+  .input-required--border {
+    box-shadow: #f70303 0px 1px;
+
+    &:focus {
+      box-shadow: #f70303 0px 2px;
+    }
+  }
+}
+
+.input__error-info {
+  margin-top: 12px;
+
+  .error-message {
+    margin: 0px;
+    max-width: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #f70303;
+  }
+}

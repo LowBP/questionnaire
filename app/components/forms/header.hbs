@@ -1,0 +1,44 @@
+<div class='header__wrapper'>
+  <div class='counter__wrapper'>
+    <div class='counter__wrapper-position'>
+      <div class='spacer'>
+        <div class='counter__wrapper-content'>
+          <div class='text__wrapper'>
+            <div aria-hidden='true'>
+              {{@data.index}}
+            </div>
+          </div>
+
+          <span class='counter__arrow-wrapper'>
+            <span aria-hidden='true' class='arrow'>
+              <svg height='10' width='11'>
+                <path
+                  d='M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z'
+                ></path>
+                <path d='M8 4v2H0V4z'></path>
+              </svg>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='text__wrapper'>
+    <label for='' class='text__wrapper-title'>
+      <span>
+        {{@data.headline}}
+        {{#if @data.required}}
+          *
+        {{/if}}
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class='header__description-block'>
+  <p>
+    <span>
+      {{@data.description}}
+    </span>
+  </p>
+</div>

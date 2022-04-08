@@ -15,7 +15,7 @@
             "identifier": "list_12110962",
             "headline": "Wen möchtest Du versichern?",
             "description": null,
-            "required": false,
+            "required": true,
             "multiple": "false",
             "choices": [
               {
@@ -482,7 +482,7 @@
             "identifier": "date_22039590",
             "headline": "Was wäre Dein Wunschtermin für den Beginn der Privathaftpflichtversicherung?",
             "description": null,
-            "required": false,
+            "required": true,
             "multiline": "false",
             "jumps": []
           },

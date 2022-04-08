@@ -1,0 +1,42 @@
+<div class='action-buttons'>
+  <div class='action-buttons__submit-wrapper'>
+    <button
+      tabindex='0'
+      class=''
+      type='button'
+      {{on 'click' this.onClick}}
+      {{on 'keyup' this.onKeyDown}}
+    >
+      <span class='button__text_wrappers'>
+        <span class='button__text_wrapper'>
+          <span class='button__text_wrapper-content'>
+            Ok
+          </span>
+          <span class='button__text_wrapper-icon-wrapper'>
+            <span>
+              <span class='tick-icon'>
+                <svg height='13' width='16'>
+                  <path
+                    d='M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z'
+                  ></path>
+                </svg>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </button>
+    {{#if @data.enablePressEnter}}
+      <div aria-hidden='true' class='action-helper__wrapper-content'>
+        <div class='content-block'>
+          <div class='text'>
+            press
+            <strong>
+              Enter ↵
+            </strong>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>

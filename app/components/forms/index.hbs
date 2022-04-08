@@ -1,0 +1,58 @@
+{{#each @rows as |item index|}}
+  {{#if item.isActive}}
+    <div class={{this.blockListClassName}} style={{this.styles}}>
+      <div class='layout__block-wrapper'>
+        <div class='block-type-short'>
+          <div class='block-scroll__root'>
+            <div class='block-scroller__positioner'>
+              <div class='root__content'>
+                <div class='content__wrapper'>
+                  <div class='content__wrapper-layout'>
+                    <div class='content__wrapper-layout-body'>
+                      <div
+                        class='question__wrapper'
+                        {{did-insert (fn this.onDomInit item index)}}
+                        {{did-update this.onPropsUpdate @isEnabledArrowDown}}
+                      >
+                        <Forms::Header
+                          @data={{item}}
+                          @rows={{@rows}}
+                        />
+                        <div class='action__wrapper'>
+                          {{#if (eq item.question_type 'text')}}
+                            {{#if (eq item.multiline 'false')}}
+                              <Forms::Input
+                                @data={{item}}
+                                @onInputAction={{this.onButtonAction}}
+                              />
+                            {{else}}
+                              <Forms::Textarea
+                                @data={{item}}
+                                @onInputAction={{this.onButtonAction}}
+                              />
+                            {{/if}}
+                          {{else if (eq item.question_type 'multiple-choice')}}
+                            <Forms::Select
+                              @data={{item}}
+                              @onSelectAction={{this.onSelectAction}}
+                            />
+                          {{/if}}
+                          <Forms::ActionButton
+                            @data={{item}}
+                            @onTabAction={{this.onTabAction}}
+                            @onButtonAction={{this.onButtonAction}}
+                          />
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
