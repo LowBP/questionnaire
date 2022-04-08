@@ -1,0 +1,33 @@
+{{! template-lint-disable}}
+
+<div class='textarea__wrapper' {{did-insert this.onInitDom}}>
+  <Textarea
+    class={{this.textareaClassName}}
+    id='textarea_id'
+    placeholder='Type your answer here...'
+    rows={{this.rowsCount}}
+    @value={{@data.value}}
+    style='overflow-x: hidden; overflow-wrap: break-word;'
+    {{on 'keydown' this.onKeyDown}}
+    {{on 'keyup' this.onKeyUp}}
+  />
+</div>
+{{#if this.getRequiredFieldStatus}}
+  <div class='textarea__error-info'>
+    <p class='error-message'>
+      *Required
+    </p>
+  </div>
+{{/if}}
+<div class='textarea__action-info'>
+  <p class='action-text'>
+    <strong>
+      Shift ⇧
+    </strong>
+    +
+    <strong>
+      Enter ↵
+    </strong>
+    to make a line break
+  </p>
+</div>

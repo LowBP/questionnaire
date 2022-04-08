@@ -1,0 +1,21 @@
+  {{! template-lint-disable}}
+<div class='input__wrapper' {{did-insert this.onInitDom}}>
+  <Input
+    id='input_box_id'
+    @type='text'
+    autocomplete='name'
+    placeholder='Type your answer here...'
+    name='name'
+    tabindex='0'
+    class={{if this.getRequiredFieldStatus 'input-required--border'}}
+    @value={{@data.value}}
+    {{on 'keydown' this.onKeyDown}}
+  />
+</div>
+{{#if this.getRequiredFieldStatus}}
+  <div class='input__error-info'>
+    <p class='error-message'>
+      *Required
+    </p>
+  </div>
+{{/if}}

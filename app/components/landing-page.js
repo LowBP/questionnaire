@@ -2,10 +2,14 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { inject as service } from '@ember/service';
 
 var SCENE = {};
 export default class LandingPageComponent extends Component {
+  @service global;
+
   clearTimeout = '';
+  NODE = '';
 
   get getQuestion() {
     return this.args.model.map((data) => {
@@ -61,11 +65,15 @@ export default class LandingPageComponent extends Component {
     this.clearTimeout = setTimeout(() => {
       SCENE.reverse();
     }, 400);
+
+    this.NODE = document.getElementsByClassName('ember-application')[0];
+    this.NODE.addEventListener('keyup', this.registerKeyEventAction, true);
   }
 
   @action
   onDestroy() {
     this.addRemoveModifierClass();
+    this.NODE.removeEventListener('keyup', this.registerKeyEventAction, true);
   }
 
   @action
@@ -78,8 +86,20 @@ export default class LandingPageComponent extends Component {
     SCENE.reverse();
   }
 
+  @action
+  moveToNextPage() {
+    this.global.isLandingPageVisited = true;
+  }
+
   // private functions
   addRemoveModifierClass() {
-    document.body.classList.toggle('body--display-block');
+    document.body.classList.toggle('landingPage');
   }
+
+  registerKeyEventAction = (e) => {
+    const keyCode = e.which || e.keyCode;
+    if (e.key === 'Enter' || keyCode == 13) {
+      this.moveToNextPage();
+    }
+  };
 }

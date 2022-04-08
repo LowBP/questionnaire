@@ -34,9 +34,6 @@ html {
 
 body {
   height: 100%;
-  display: flex;
-
-  align-items: center;
 
   // overflow: hidden;
   font-size: 17px;
@@ -46,18 +43,12 @@ body {
   -webkit-font-smoothing: antialiased;
   color: rgb(70, 70, 102);
   background: #fff;
-}
 
-.body--display-block {
-  display: block;
-
-  @media (min-width: 2160px) {
-    display: flex;
-    #questn-page-id {
-      width: 100%;
-    }
+  &:not(.landingPage){
+    overflow:hidden
   }
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -142,13 +133,6 @@ main {
   display: block;
 }
 
-.pattern-dot--size {
-  top: 98px !important;
-  right: 188px !important;
-  width: 150px !important;
-  height: 150px !important;
-}
-
 .page-bottom-left-circle {
   position: absolute;
   bottom: 67px;
@@ -161,4 +145,73 @@ main {
   -webkit-animation: animationFade 5s infinite linear;
   animation: animationFade 5s infinite linear;
   left: -72px;
+}
+
+//spinner------
+#root-spinner {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  color: transparent;
+  fill: currentColor;
+
+  .spinner__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    #svg-spinner {
+      -webkit-transition-property: -webkit-transform;
+      -webkit-transition-duration: 1.2s;
+      -webkit-animation-name: rotate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+
+      -moz-transition-property: -moz-transform;
+      -moz-animation-name: rotate;
+      -moz-animation-duration: 1.2s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+
+      transition-property: transform;
+      animation-name: rotate;
+      animation-duration: 1.2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes rotate {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes rotate {
+      from {
+        -moz-transform: rotate(0deg);
+      }
+      to {
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }
