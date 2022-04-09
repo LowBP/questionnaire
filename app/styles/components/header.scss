@@ -1,3 +1,5 @@
+@import "../breakpoints";
+
 .header__wrapper {
   position: relative;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +37,7 @@
           font-size: 16px;
           line-height: 24px;
           text-align: center;
-          min-width: 30px;
+          min-width: 20px;
         }
         .counter__arrow-wrapper {
           margin-left: 10px;
@@ -52,6 +54,10 @@
               fill: rgb(172, 181, 191);
               transition: fill 0.2s ease 0s;
             }
+          }
+
+          @include media-max-xs-mid {
+            display: none;
           }
         }
       }
@@ -75,5 +81,10 @@
     text-align: left;
     max-width: 600px;
     word-break: break-word;
+
+    @include media-max-sm {
+      font-size: 16px;
+      line-height: 26px;
+    }
   }
 }

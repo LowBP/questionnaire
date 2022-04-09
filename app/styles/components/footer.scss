@@ -43,8 +43,8 @@
           -webkit-box-pack: center;
           justify-content: center;
           border-radius: 0px 4px 4px 0px;
-          background-color: #fcb9b2;
-          color: rgb(255, 255, 255);
+          background-color: var(--navigation_button_bg_color);
+          color: #fff;
 
           svg {
             // display: block;
@@ -52,7 +52,7 @@
           }
 
           &:hover {
-            background-color: #faa69c;
+            background-color: var(--navigation_button_bg_hover);
           }
           &::after {
             position: absolute;
@@ -82,6 +82,7 @@
         }
 
         .page-count {
+          color: var(--dark);
           width: 50px;
           text-align: center;
           display: flex;
@@ -90,5 +91,28 @@
         }
       }
     }
+
+    @include media-max-xl {
+      width: 86%;
+    }
+    @include media-max-lg-x {
+      width: 86.5%;
+    }
+
+    @include media-max-lg {
+      width: 94%;
+    }
+
+    @include media-max-md {
+      width: 100%;
+    }
+  }
+
+  @include media-max-lg-x {
+    bottom: 25px;
+  }
+  @include media-max-md {
+    bottom: 0;
+    background-color: var(--white);
   }
 }
