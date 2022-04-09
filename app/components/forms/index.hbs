@@ -14,10 +14,7 @@
                         {{did-insert (fn this.onDomInit item index)}}
                         {{did-update this.onPropsUpdate @isEnabledArrowDown}}
                       >
-                        <Forms::Header
-                          @data={{item}}
-                          @rows={{@rows}}
-                        />
+                        <Forms::Header @data={{item}} @rows={{@rows}} />
                         <div class='action__wrapper'>
                           {{#if (eq item.question_type 'text')}}
                             {{#if (eq item.multiline 'false')}}
@@ -42,7 +39,6 @@
                             @onTabAction={{this.onTabAction}}
                             @onButtonAction={{this.onButtonAction}}
                           />
-
                         </div>
                       </div>
                     </div>

@@ -45,79 +45,6 @@
   }
 }
 
-// .block-list__item {
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   padding-top: 0px;
-//   transition: transform 600ms ease 0s, opacity 300ms ease 0s;
-//   will-change: top;
-
-//   &.arrow-down--transform {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     padding-top: 0px;
-//     pointer-events: none;
-//     // transition: transform 600ms ease 0s, opacity 300ms ease 0s;
-//     opacity: 1;
-//     transform: translateY(100vh);
-//   }
-
-//   &.arrow-up--transform {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     padding-top: 0px;
-//     pointer-events: none;
-//     transition: transform 600ms ease 0s, opacity 300ms ease 0s;
-//     opacity: 1;
-//     transform: translateY(-100vh);
-//   }
-
-//   &.arrow-down--top-list {
-//     top: 100vh;
-//     transition: top 600ms ease 0s;
-//     opacity: 0;
-//   }
-
-//   &.arrow-up--top-list {
-//     top: -100vh;
-//     transition: top 600ms ease 0s;
-//     opacity: 0;
-//   }
-
-//   .layout__block-wrapper {
-//     height: 100%;
-//     display: flex;
-
-//     .block-type-short {
-//       position: relative;
-//       height: 100%;
-//       width: 100%;
-//       display: flex;
-//       -webkit-box-pack: center;
-//       justify-content: center;
-//       flex-direction: column;
-
-//       .block-scroll__root {
-//         width: 100%;
-//         height: 100%;
-//         overflow: hidden auto;
-
-//         .block-scroller__positioner {
-//           width: 100%;
-//           min-height: 100%;
-//           display: flex;
-//           flex-direction: column;
-//           -webkit-box-pack: center;
-//           justify-content: center;
-//         }
-//       }
-//     }
-//   }
-// }
-
 .block-list__item {
   position: absolute;
   width: 100%;
@@ -127,7 +54,6 @@
 
   &.arrow-down--transform {
     position: absolute;
-
     pointer-events: none;
     // transition: transform 600ms ease 0s, opacity 300ms ease 0s;
     opacity: 1;
@@ -177,7 +103,6 @@
         &::-webkit-scrollbar {
           display: none; /* Safari and Chrome */
         }
-
         .block-scroller__positioner {
           width: 100%;
           min-height: 100%;
