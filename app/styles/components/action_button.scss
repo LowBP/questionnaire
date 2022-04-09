@@ -1,0 +1,107 @@
+.action-buttons {
+  z-index: 1100;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+  justify-content: center;
+
+  .action-buttons__submit-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    align-items: center;
+    margin-bottom: 4px;
+
+    button {
+      position: relative;
+      font-family: inherit;
+      line-height: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition-duration: 0.1s;
+      transition-property: background-color, color, border-color, opacity, box-shadow;
+      transition-timing-function: ease-out;
+      outline: none;
+      border: 1px solid transparent;
+      margin: 0px;
+      box-shadow: 0px 3px 12px 0px var(--button_box_shadow);
+      padding: 8px 18px;
+      min-height: 48px;
+      background-color: var(--button_bg_color);
+
+      color: var(--button_color);
+      border-radius: 4px;
+
+      .button__text_wrappers {
+        width: 100%;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+
+        .button__text_wrapper {
+          transition: all 0.2s ease 0s;
+
+          .button__text_wrapper-content {
+            margin: 0px;
+            max-width: 100%;
+            font-weight: unset;
+            font-size: 24px;
+            line-height: 32px;
+
+            @include media-max-lg-x {
+              font-size: 20px;
+              line-height: 26px;
+            }
+
+            @include media-max-sm {
+              font-size: 18px;
+              line-height: 22px;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        background-color: var(--button_hv_color);
+      }
+      &::after {
+        position: absolute;
+        content: " ";
+        inset: 0px;
+        transition: all 0.1s ease-out 0s;
+      }
+
+      &:focus::after {
+        inset: -3px;
+        border-radius: 6px;
+        box-shadow: 0px 0px 0px 2px var(--button_focus_color);
+      }
+    }
+
+    .action-helper__wrapper-content {
+      @include media-min-lg-x {
+        margin-left: 12px;
+        position: absolute;
+        left: 100%;
+      }
+
+      @include media-max-lg-x {
+        display: none;
+      }
+
+      .content-block {
+        white-space: nowrap;
+
+        .text {
+          margin: 0px;
+          max-width: 100%;
+          font-weight: unset;
+          font-size: 12px;
+          line-height: 16px;
+          color: rgb(60, 60, 59);
+          font-family: sans-serif;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,215 @@
+// # Media Query
+$screen-xs: 363px;
+$screen-xs-mid: 425px;
+$screen-sm: 576px;
+$screen-md: 767px;
+$screen-md-x: 768px;
+$screen-md-mid: 800px;
+$screen-lg: 992px;
+$screen-lg-x: 1024px;
+$screen-xl: 1200px;
+$screen-xl-med: 1300px;
+$screen-xl-max: 1299px;
+$screen-xxl: 1500px;
+
+//  Mixins
+// =============================================================
+
+@mixin media-min-xs {
+    @media (min-width: #{$screen-xs}) {
+        @content;
+    }
+}
+
+@mixin media-min-sm {
+    @media (min-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+@mixin media-min-md {
+    @media (min-width: #{$screen-md}) {
+        @content;
+    }
+}
+
+@mixin media-min-md-x {
+    @media (min-width: #{$screen-md}) {
+        @content;
+    }
+}
+
+@mixin media-min-lg {
+    @media (min-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+@mixin media-min-lg-x {
+    @media (min-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-min-xl {
+    @media (min-width: #{$screen-xl}) {
+        @content;
+    }
+}
+@mixin media-min-xl-med {
+    @media (min-width: #{$screen-xl-med}) {
+        @content;
+    }
+}
+@mixin media-max-xl-med {
+    @media (max-width: #{$screen-xl-max}) {
+        @content;
+    }
+}
+@mixin media-min-xxl {
+    @media (min-width: #{$screen-xxl}) {
+        @content;
+    }
+}
+
+@mixin media-max-xs {
+    @media (max-width: #{$screen-xs}) {
+        @content;
+    }
+}
+
+@mixin media-max-xs-mid {
+  @media (max-width: #{$screen-xs-mid}) {
+      @content;
+  }
+}
+
+@mixin media-max-sm {
+    @media (max-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+@mixin media-max-md {
+    @media (max-width: #{$screen-md}) {
+        @content;
+    }
+}
+@mixin media-max-md-x {
+    @media (max-width: #{$screen-md-x}) {
+        @content;
+    }
+}
+@mixin media-max-md-mid {
+    @media (max-width: #{$screen-md-mid}) {
+        @content;
+    }
+}
+
+@mixin media-max-lg {
+    @media (max-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+@mixin media-max-lg-x {
+    @media (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-max-lg-x {
+    @media (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-max-lg-x {
+    @media (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-max-lg-x {
+    @media (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-max-lg-x {
+    @media (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-max-xl {
+    @media (max-width: #{$screen-xl}) {
+        @content;
+    }
+}
+
+@mixin media-max-xxl {
+    @media (max-width: #{$screen-xxl}) {
+        @content;
+    }
+}
+
+@mixin media-min-lg-max-lg-x {
+    @media (min-width: #{$screen-lg}) and (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-min-lg-max-xxl {
+    @media (min-width: #{$screen-lg}) and (max-width: #{$screen-xxl}) {
+        @content;
+    }
+}
+
+@mixin media-min-sm-max-md {
+    @media (min-width: #{$screen-sm}) and (max-width: #{$screen-md}) {
+        @content;
+    }
+}
+@mixin media-min-sm-max-lg-x {
+    @media (min-width: #{$screen-sm}) and (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+@mixin media-min-sm-max-xl {
+    @media (min-width: #{$screen-sm}) and (max-width: #{$screen-xl}) {
+        @content;
+    }
+}
+@mixin media-min-lg-max-lg-x {
+    @media (min-width: #{$screen-lg}) and (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}
+
+@mixin media-min-lg-max-xl {
+    @media (min-width: #{$screen-lg}) and (max-width: #{$screen-xl}) {
+        @content;
+    }
+}
+
+@mixin media-min-md-max-lg {
+    @media (min-width: #{$screen-md}) and (max-width: #{$screen-lg}) {
+        @content;
+    }
+}
+@mixin media-min-md-max-xxl {
+    @media (min-width: #{$screen-md}) and (max-width: #{$screen-xxl}) {
+        @content;
+    }
+}
+@mixin media-min-md-max-xl {
+    @media (min-width: #{$screen-md}) and (max-width: #{$screen-xl}) {
+        @content;
+    }
+}
+@mixin media-min-sm-max-lg-x {
+    @media (min-width: #{$screen-sm}) and (max-width: #{$screen-lg-x}) {
+        @content;
+    }
+}

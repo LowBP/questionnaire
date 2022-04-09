@@ -1,0 +1,61 @@
+@import "../app-variables";
+
+:root {
+  --white: #fff;
+  --dark: #333;
+  --landing_pattern_circle: #f7f8f9;
+  --clientbox_font: #727272;
+  --landing_content_border: #e5e5e5;
+  --landing_time_alert: #6d6b6b;
+  --button_bg_color: #f1897e;
+  --button_color: rgb(255, 255, 255);
+  --button_hv_color: #faa69c;
+  --button_focus_color: #fcb7b1;
+  --body_font_color: rgb(70, 70, 102);
+  --button_box_shadow: #e4d5d9;
+  --landing_client_box_shadow: #d3dce8;
+  --landing_client_box_bg: #fff;
+}
+
+.dark-mode {
+  --white: #333;
+  --dark: #fff;
+  --landing_pattern_circle: #f7f8f9;
+  --clientbox_font: #fff;
+  --landing_time_alert: #fff;
+  --button_bg_color: #526ef6;
+  --button_color: rgb(255, 255, 255);
+  --button_hv_color: #555ae0;
+  --button_focus_color: #3858f2;
+  --body_font_color: rgb(70, 70, 102);
+  --button_box_shadow: transparent;
+  --landing_client_box_shadow: transparent;
+  --landing_client_box_bg: #4d4c4c;
+
+  .pattern-dot {
+    background-image: url(../assets/images/pattern-2.png) !important;
+  }
+  .pattern-dot, .pattern-dot-left-top, .pattern-dot-right-bottom {
+    opacity: 0.5 !important;
+  }
+
+  .pattern-circle{
+    opacity: 0.03;
+  }
+
+
+  .content-block__wrapper-box .upper-box {
+    .upper-box-title h2 {
+      color: $white !important;
+    }
+    .upper-box-description p {
+      color: $white !important;
+    }
+  }
+
+  .clients-box {
+    h3 {
+      color: $white;
+    }
+  }
+}
