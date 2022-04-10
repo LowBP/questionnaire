@@ -3,13 +3,23 @@
 {{else}}
   <section class='questn-page' {{did-insert this.domInit}}>
     <div class='theme-switch'>
-      <Forms::Switch
-        @checked={{this.isNotDarkMode}}
-        {{did-update this.onUpdateSwitch this.isNotDarkMode}}
-      />
+      {{#unless this.global.isShowSubmitPage}}
+        <Forms::Switch
+          @checked={{this.isNotDarkMode}}
+          {{did-update this.onUpdateSwitch this.isNotDarkMode}}
+        />
+      {{/unless}}
     </div>
     <div class='questn-page__container'>
-      {{#if this.isShowQuestionnairePage}}
+      {{#if this.global.isShowSubmitPage}}
+        <div class='thankyou-page' {{did-insert this.onSpinnerInserted}}>
+          {{#if this.isSpinnerActive}}
+            <Loading />
+          {{else}}
+           <Forms::ThankSvg/>
+          {{/if}}
+        </div>
+      {{else if this.isShowQuestionnairePage}}
         <QuestionnairePage @model={{@model}} />
       {{else}}
         <LandingPage @model={{@model}} />

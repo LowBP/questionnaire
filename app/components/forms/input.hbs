@@ -4,7 +4,7 @@
     id='input_box_id'
     @type='text'
     autocomplete='name'
-    placeholder='Type your answer here...'
+    placeholder={{@data.meta.placeholder}}
     name='name'
     tabindex='0'
     class={{if this.getRequiredFieldStatus 'input-required--border'}}

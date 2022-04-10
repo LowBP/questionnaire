@@ -4,7 +4,7 @@
   <Textarea
     class={{this.textareaClassName}}
     id='textarea_id'
-    placeholder='Type your answer here...'
+    placeholder={{@data.meta.placeholder}}
     rows={{this.rowsCount}}
     @value={{@data.value}}
     style='overflow-x: hidden; overflow-wrap: break-word;'
