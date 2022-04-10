@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
+var start;
 export default class FormsIndexComponent extends Component {
   @service global;
 
@@ -17,6 +18,7 @@ export default class FormsIndexComponent extends Component {
   NODE = '';
   clearTimeout1 = '';
   clearTimeout2 = '';
+  wheelEvent = '';
 
   // tracked properties ----
   get getLastItemIndex() {
@@ -26,6 +28,8 @@ export default class FormsIndexComponent extends Component {
   // actions----
   @action
   onDomInit(item, index) {
+    this.wheelEvent =
+      'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
     this.registerDomEventAction(item, index);
     this.renderedItemData = item;
     this.renderedItemIndex = index;
@@ -71,6 +75,27 @@ export default class FormsIndexComponent extends Component {
   onSelectAction() {
     this.pageTransitionValidation();
   }
+
+  @action
+  onDestroy() {
+    this.NODE.removeEventListener(
+      this.wheelEvent,
+      this.wheelEventPageTransition,
+      false
+    );
+    window.removeEventListener(
+      'touchmove',
+      this.wheelEventPageTransition,
+      false
+    );
+    window.removeEventListener('touchstart', this.touchStart, false);
+    this.NODE.removeEventListener(
+      'DOMMouseScroll',
+      this.wheelEventPageTransition,
+      false
+    );
+  }
+
   // private functions----
 
   pageTransitionValidation() {
@@ -86,10 +111,21 @@ export default class FormsIndexComponent extends Component {
     // unregister the event
     if (this.NODE) {
       this.NODE.removeEventListener(
-        'wheel',
+        this.wheelEvent,
         this.wheelEventPageTransition,
-        true
+        false
       );
+      this.NODE.removeEventListener(
+        'DOMMouseScroll',
+        this.wheelEventPageTransition,
+        false
+      );
+      window.removeEventListener(
+        'touchmove',
+        this.wheelEventPageTransition,
+        false
+      );
+      window.removeEventListener('touchstart', this.touchStart, false);
     }
 
     if (this.clearTimeout1) {
@@ -119,20 +155,52 @@ export default class FormsIndexComponent extends Component {
   }
 
   registerDomEventAction() {
-    this.scrollDebounce = true;
     this.NODE = document.getElementsByClassName(
       'block-scroller__positioner'
     )?.[0];
 
-    this.NODE.addEventListener('wheel', this.wheelEventPageTransition, true);
+    this.NODE.addEventListener(
+      this.wheelEvent,
+      this.wheelEventPageTransition,
+      false
+    );
+    window.addEventListener('touchmove', this.wheelEventPageTransition, false);
+    window.addEventListener('touchstart', this.touchStart, false);
+    this.NODE.addEventListener(
+      'DOMMouseScroll',
+      this.wheelEventPageTransition,
+      false
+    );
   }
 
-  wheelEventPageTransition = (e) => {
+  touchStart = (e) => {
+    let swipe = e.touches;
+    start = swipe[0].pageY;
+  };
+  wheelEventPageTransition = async (e) => {
     if (this.scrollDebounce) {
       this.scrollDebounce = false;
       const dir = Math.sign(e.deltaY);
       // dir = 1 down direction
-      const isUpDirection = dir === 1 ? false : true;
+      let isUpDirection;
+      // for mob devices
+      if (e.touches?.length) {
+        var contact = e.touches,
+          end = contact[0].pageY,
+          distance = end - start;
+        if (distance < -8) {
+          //up
+          isUpDirection = false;
+        } else if (distance > 0) {
+          // down
+          isUpDirection = true;
+        } else {
+          this.scrollDebounce = true;
+          return;
+        }
+      } else {
+        isUpDirection = dir === 1 ? false : true;
+      }
       let isNotBlockScrollAction = true;
 
       let scrollBlock = document.querySelector('.block-scroll__root');
@@ -178,29 +246,12 @@ export default class FormsIndexComponent extends Component {
           isUpDirection
         );
       }
+      e.preventDefault();
     }
   };
 
-  scrollEventToSwitchPage(item, index, isUpDirection) {
-    // unregister the event
-    if (this.NODE) {
-      this.NODE.removeEventListener(
-        'wheel',
-        this.wheelEventPageTransition,
-        true
-      );
-    }
-
-    if (this.clearTimeout1) {
-      clearTimeout(this.clearTimeout1);
-      this.scrollDebounce = true;
-    }
-
-    if (this.clearTimeout2) {
-      clearTimeout(this.clearTimeout2);
-      this.scrollDebounce = true;
-    }
-
+  scrollEventToSwitchPage = (item, index, isUpDirection) => {
+    this.onDestroy();
     this.clearTimeout1 = setTimeout(() => {
       item.isActive = false;
       this.blockListClassName =
@@ -212,10 +263,12 @@ export default class FormsIndexComponent extends Component {
 
       this.clearTimeout2 = setTimeout(() => {
         this.styles = 'top:0; opacity:1';
-        this.scrollDebounce = true;
+        setTimeout(() => {
+          this.scrollDebounce = true;
+        }, 300);
       }, 12);
     }, 30);
-  }
+  };
 
   updateNextActiveIndex(index) {
     this.global.rows[index].isActive = true;
