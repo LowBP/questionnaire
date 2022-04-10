@@ -1,10 +1,12 @@
+@import "../breakpoints";
+
 .textarea__wrapper {
   .auto-size-text-area {
     appearance: none;
     display: block;
     width: 100%;
     font-family: inherit;
-    color: rgb(35, 35, 35);
+    color: var(--input_text_color);
     padding: 0px 0px 8px;
     border-radius: 0px;
     border: none;
@@ -16,15 +18,15 @@
     resize: none;
     overflow: hidden;
     transition: box-shadow 0.1s ease-out 0s;
-    box-shadow: #fcb9b2 0px 1px;
+    box-shadow: var(--input_box_shadow) 0px 1px;
 
     &:focus {
-      box-shadow: #faa69c 0px 2px;
+      box-shadow: var(--input_box_shadow_hover) 0px 2px;
     }
     &::placeholder {
       opacity: 0.7;
       font-size: 20px;
-      color: gray;
+      color: var(--input_placeholder);
     }
 
     .textarea-required--border {
@@ -59,6 +61,10 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    color: rgb(35, 35, 35);
+    color: var(--input_text_color);
+  }
+
+  @include media-max-md-mid {
+    display: none;
   }
 }

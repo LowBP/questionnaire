@@ -3,7 +3,7 @@
     display: block;
     width: 100%;
     font-family: inherit;
-    color: rgb(35, 35, 35);
+    color: var(--input_text_color);
     padding: 0px 0px 8px;
     border: none;
     outline: none;
@@ -20,19 +20,23 @@
     font-size: 20px;
     -webkit-font-smoothing: antialiased;
     line-height: unset;
-    -webkit-text-fill-color: rgb(35, 35, 35);
+    -webkit-text-fill-color: var(--input_text_color);
     animation: 1ms ease 0s 1 normal none running native-autofill-in;
     transition: background-color 1e8s ease 0s, box-shadow 0.1s ease-out 0s;
-    box-shadow: #fcb9b2 0px 1px;
+    box-shadow: var(--input_box_shadow) 0px 1px;
     background-color: transparent !important;
 
     &:focus {
-      box-shadow: #faa69c 0px 2px;
+      box-shadow: var(--input_box_shadow_hover) 0px 2px;
     }
     &::placeholder {
       opacity: 0.7;
       font-size: 20px;
-      color: gray;
+      color: var(--input_placeholder);
+    }
+
+    @include media-max-sm {
+      font-size: 18px;
     }
   }
   .input-required--border {

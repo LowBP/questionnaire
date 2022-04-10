@@ -16,7 +16,7 @@
             "headline": "Wen möchtest Du versichern?",
             "description": null,
             "required": true,
-            "multiple": "false",
+            "multiple": "true",
             "choices": [
               {
                 "label": "Meine Familie mit Kindern",

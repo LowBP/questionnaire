@@ -6,7 +6,7 @@
     height: 100%;
     font-family: inherit;
     box-sizing: border-box;
-    color: rgb(68, 68, 68);
+    color: var(--default_form_color);
     font-size: 16px;
     line-height: 24px;
   }
@@ -15,7 +15,7 @@
     // z-index: -20;
     line-height: 0;
     opacity: 1;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
@@ -155,18 +155,22 @@
     margin: 0px;
     max-width: 100%;
     font-weight: unset;
-    font-size: 24px;
-    line-height: 32px;
-    color: rgb(61, 61, 61);
+
+    color: var(--form_header_number);
     max-width: 600px;
     word-break: break-word;
 
     .text__wrapper-title {
-      margin: 0px;
-      max-width: 100%;
-      font-weight: unset;
       font-size: 24px;
       line-height: 32px;
+      @include media-max-sm {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+
+    @include media-max-lg {
+      max-width: 520px !important;
     }
   }
 
@@ -220,5 +224,17 @@
         }
       }
     }
+  }
+
+  @include media-max-lg {
+    padding-left: 65px;
+  }
+
+  @include media-max-md {
+    padding-left: 70px;
+  }
+
+  @include media-max-xs-mid {
+    padding-left: 30px;
   }
 }

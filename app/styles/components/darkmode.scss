@@ -15,6 +15,25 @@
   --button_box_shadow: #e4d5d9;
   --landing_client_box_shadow: #d3dce8;
   --landing_client_box_bg: #fff;
+  --default_form_color: rgb(68, 68, 68);
+  --form_header_number: rgb(61, 61, 61);
+  --input_text_color: rgb(35, 35, 35);
+  --input_placeholder: rgb(128, 128, 128)
+  --input_box_shadow: #fcb9b2;
+  --input_box_shadow_hover: #faa69c;
+  --navigation_button_bg_color: #fcb9b2;
+  --navigation_button_bg_hover: #faa69c;
+  --radio_input_box_shadow: #fcb9b2;
+  --radio_input_hover: #fcb9b2;
+  --radio_input_selected: #d43c36;
+  --radio_input_bg_color: #ffffff1a;
+  --radio_input_focus: #fcb7b1;
+  --radio_key_helper_bg_color: #f8e3e0;
+  --radio-key_helper_border_color: #fcb9b2;
+  --radio_key_color: #582e2e;
+
+
+
 }
 
 .dark-mode {
@@ -31,18 +50,48 @@
   --button_box_shadow: transparent;
   --landing_client_box_shadow: transparent;
   --landing_client_box_bg: #4d4c4c;
+  --default_form_color: #ffff;
+  --form_header_number: #fff;
+  --input_text_color: #fff;
+  --input_placeholder: #d4d0d0;
+  --input_box_shadow: #526ef6;
+  --input_box_shadow_hover: #4260f4;
+  --navigation_button_bg_color: #677ef0;
+  --navigation_button_bg_hover: #7a8ce4;
+  --radio_input_box_shadow: rgb(255 255 255 / 60%);
+  --radio_input_hover: rgba(255, 255, 255, 0.2);
+  --radio_input_selected: #fff;
+  --radio_input_bg_color: #333;
+  --radio_input_focus: #fff;
+  --radio_key_helper_bg_color: #333;
+  --radio-key_helper_border_color: rgba(255, 255, 255, 0.6);
+  --radio_key_color: #fff;
 
-  .pattern-dot {
+
+
+
+
+
+
+
+
+
+
+
+  .pattern-dot,
+  .questionnaire-page__wrapper .pattern-grid {
     background-image: url(../assets/images/pattern-2.png) !important;
   }
-  .pattern-dot, .pattern-dot-left-top, .pattern-dot-right-bottom {
-    opacity: 0.5 !important;
+  .pattern-dot,
+  .pattern-dot-left-top,
+  .pattern-dot-right-bottom,
+  .questionnaire-page__wrapper .pattern-grid {
+    opacity: 0.3 ;
   }
 
-  .pattern-circle{
+  .pattern-circle {
     opacity: 0.03;
   }
-
 
   .content-block__wrapper-box .upper-box {
     .upper-box-title h2 {
@@ -56,6 +105,12 @@
   .clients-box {
     h3 {
       color: $white;
+    }
+  }
+
+  .spinner__wrapper{
+    circle {
+      fill: #526ef6;
     }
   }
 }

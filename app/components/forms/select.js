@@ -67,7 +67,11 @@ export default class FormsSelectComponent extends Component {
     let keyCode = e.which || e.keyCode;
 
     // don't run if tab press event ocurred
-    if (keyCode || e.key == 'Tab') return;
+    if (
+      (keyCode == 9 || e.key == 'Tab') &&
+      this.args.data.choices.filter((c) => c.selected === true).length
+    )
+      return;
 
     // keyboard key press to move next page
     const asciiValue = String.fromCharCode(keyCode).toString();

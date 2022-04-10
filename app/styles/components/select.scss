@@ -1,3 +1,5 @@
+@import "../breakpoints";
+
 .radiogroup {
   .choice__lists {
     display: inline-flex;
@@ -24,8 +26,8 @@
           -webkit-box-align: center;
           align-items: center;
           border-radius: 4px;
-          background-color: #ffffff1a;
-          box-shadow: #fcb9b2 0px 0px 0px 2px inset;
+          background-color: var(--radio_input_bg_color);
+          box-shadow: var(--radio_input_box_shadow) 0px 0px 0px 1px inset;
           // color: rgb(255, 255, 255);
           max-width: 100%;
           min-width: 75px;
@@ -54,9 +56,9 @@
               font-size: 12px;
               line-height: 16px;
               font-family: sans-serif;
-              border-color: #fcb9b2;
-              background-color: #f8e3e0;
-              color: #582e2e;
+              border-color: var(--radio-key_helper_border_color);
+              background-color: var(--radio_key_helper_bg_color);
+              color: var(--radio_key_color);
 
               .key-helper__hint-wrapper {
                 position: absolute;
@@ -71,8 +73,8 @@
                   border-width: 1px;
                   border-style: solid;
                   border-radius: 2px;
-                  border-color: #fcb9b2;
-                  background-color: #f8e3e0;
+                  border-color: var(--radio-key_helper_border_color);
+                  background-color: var(--radio_key_helper_bg_color);
 
                   .key-hint {
                     display: none;
@@ -110,6 +112,11 @@
               font-weight: unset;
               font-size: 20px;
               line-height: 28px;
+
+              @include media-max-sm {
+                font-size: 16px;
+                line-height: 26px;
+              }
             }
           }
 
@@ -128,14 +135,14 @@
 
               svg {
                 display: block;
-                fill: #000;
+                fill: var(--dark);
                 transition: fill 0.2s ease 0s;
               }
             }
           }
           &.isSelected {
             animation: 0.25s ease 0s 2 normal none running jBPXGM;
-            box-shadow: #d43c36 0px 0px 0px 2px inset;
+            box-shadow: var(--radio_input_selected) 0px 0px 0px 2px inset;
             outline: none;
             .checkbox__wrapper {
               opacity: 1;
@@ -144,14 +151,14 @@
         }
       }
       &:hover .radio-list__item {
-        background-color: #fcb9b2;
+        background-color: var(--radio_input_hover);
         color: #fff;
       }
       &:focus {
         .radio-list__item {
           color: #fff;
-          background-color: #fcb9b2;
-          box-shadow: 0px 0px 0px 1px #fcb7b1;
+          background-color: var(--radio_input_hover);
+          box-shadow: 0px 0px 0px 2px var(--radio_input_focus);
         }
         .key-hint {
           display: block !important;
