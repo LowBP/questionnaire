@@ -1,7 +1,21 @@
 # questionnaire
 Create a small questionnaire Web Application using emberjs.
 
-# features
+## features
+
+- [x] Darkmode
+- [x] Landing page with animations
+- [x] Questionnaire page with smooth scroller
+- [x] Accessibility features (keyboard naviagations (tab, arrow keys, shift and enter etc)
+- [x] Validations
+- [x] Text and multiple choice fields support
+- [x] mobile friendly site(ietested with mobile device)
+- [x] Used MVC structure 
+- [x] Configured github actions
+- [x] 1 component test case
+- [ ] Acceptance tests
+- [ ] More component tests
+
 
 
 ## Prerequisites
