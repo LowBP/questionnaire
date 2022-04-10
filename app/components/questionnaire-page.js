@@ -17,10 +17,15 @@ class Choice {
 class Properties {
   @tracked rowsCount;
   @tracked inValid;
+  @tracked placeholder;
   constructor(args) {
     this.rowsCount = args.rowsCount || 1;
     this.inValid = false;
     this.enablePressEnter = args.question_type === 'text' ? true : false;
+    this.placeholder =
+      args.question_type === 'text'
+        ? 'Geben Sie hier Ihre Antwort ein...'
+        : false;
   }
 }
 

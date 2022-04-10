@@ -18,7 +18,7 @@
   --default_form_color: rgb(68, 68, 68);
   --form_header_number: rgb(61, 61, 61);
   --input_text_color: rgb(35, 35, 35);
-  --input_placeholder: rgb(128, 128, 128)
+  --input_placeholder: rgb(128, 128, 128);
   --input_box_shadow: #fcb9b2;
   --input_box_shadow_hover: #faa69c;
   --navigation_button_bg_color: #fcb9b2;
@@ -31,9 +31,7 @@
   --radio_key_helper_bg_color: #f8e3e0;
   --radio-key_helper_border_color: #fcb9b2;
   --radio_key_color: #582e2e;
-
-
-
+  --form_header_description: rgba(61, 61, 61, 0.7);
 }
 
 .dark-mode {
@@ -66,17 +64,7 @@
   --radio_key_helper_bg_color: #333;
   --radio-key_helper_border_color: rgba(255, 255, 255, 0.6);
   --radio_key_color: #fff;
-
-
-
-
-
-
-
-
-
-
-
+  --form_header_description: rgb(244 241 241 / 70%);
 
   .pattern-dot,
   .questionnaire-page__wrapper .pattern-grid {
@@ -86,7 +74,7 @@
   .pattern-dot-left-top,
   .pattern-dot-right-bottom,
   .questionnaire-page__wrapper .pattern-grid {
-    opacity: 0.3 ;
+    opacity: 0.3;
   }
 
   .pattern-circle {
@@ -108,9 +96,13 @@
     }
   }
 
-  .spinner__wrapper{
+  .spinner__wrapper {
     circle {
       fill: #526ef6;
     }
+  }
+
+  .thankyou-svg path {
+    fill: $white !important;
   }
 }

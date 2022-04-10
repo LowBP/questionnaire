@@ -11,6 +11,7 @@ export default class ApplicationController extends Controller {
   clearTimeout = '';
   @action
   onSpinnerInserted() {
+    this.isSpinnerActive = true;
     if (this.clearTimeout) clearTimeout(this.clearTimeout);
 
     setTimeout(() => {
@@ -24,7 +25,6 @@ export default class ApplicationController extends Controller {
     // check dark theme
     const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
     if (darkThemeMq.matches) {
-      this.toggleDarkModeClass();
       this.isNotDarkMode = false;
       // Theme set to dark.
     }
@@ -36,6 +36,10 @@ export default class ApplicationController extends Controller {
   }
 
   toggleDarkModeClass() {
-    document.body.classList.toggle('dark-mode');
+    if (!this.isNotDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   }
 }

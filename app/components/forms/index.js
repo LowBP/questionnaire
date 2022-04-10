@@ -293,6 +293,36 @@ export default class FormsIndexComponent extends Component {
   moveToNextPage() {
     if (this.renderedItemIndex + 1 !== this.global.rows.length) {
       this.onArrowDown();
+    } else {
+      if (this.checkFormValidation()) {
+        // show thank you form
+        this.global.isShowSubmitPage = true;
+        this.global.isLandingPageVisited = false;
+      } else {
+        let toast = document.getElementById('toast');
+        toast.className = 'show';
+        setTimeout(() => {
+          toast.className = toast.className.replace('show', '');
+        }, 3000);
+      }
     }
+  }
+
+  checkFormValidation() {
+    let isFromValid = true;
+    for (let i = 0; i < this.global.rows.length; i++) {
+      const q = this.global.rows[i];
+
+      if (q.question_type === 'text' && q.required && !q.value) {
+        isFromValid = false;
+        this.global.rows[i].meta.inValid = true; // show required alert
+      } else if (q.question_type === 'multiple-choice' && q.required) {
+        if (!q.choices.filter((c) => c.selected === true).length) {
+          isFromValid = false;
+          this.global.rows[i].meta.inValid = true; // show required alert
+        }
+      }
+    }
+    return isFromValid;
   }
 }
