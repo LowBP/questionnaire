@@ -252,6 +252,8 @@ export default class FormsIndexComponent extends Component {
 
   scrollEventToSwitchPage = (item, index, isUpDirection) => {
     this.onDestroy();
+    const timeoutValue =
+      navigator?.userAgent?.indexOf('Chrome') != -1 ? 300 : 700;
     this.clearTimeout1 = setTimeout(() => {
       item.isActive = false;
       this.blockListClassName =
@@ -265,7 +267,7 @@ export default class FormsIndexComponent extends Component {
         this.styles = 'top:0; opacity:1';
         setTimeout(() => {
           this.scrollDebounce = true;
-        }, 300);
+        }, timeoutValue);
       }, 12);
     }, 30);
   };
