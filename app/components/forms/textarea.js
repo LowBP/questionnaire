@@ -10,7 +10,7 @@ export default class FormsTextareaComponent extends Component {
 
   @action
   onInitDom() {
-    document.getElementById('textarea_id')?.focus();
+    // document.getElementById('textarea_id')?.focus();
   }
 
   @action

@@ -18,6 +18,7 @@ export default class FormsIndexComponent extends Component {
   NODE = '';
   clearTimeout1 = '';
   clearTimeout2 = '';
+  clearTimeout3 = '';
   wheelEvent = '';
 
   // tracked properties ----
@@ -145,11 +146,12 @@ export default class FormsIndexComponent extends Component {
         (isUpDirection ? 'arrow-up--top-list' : 'arrow-down--top-list');
 
       // activate next page
-      this.updateNextActiveIndex(isUpDirection ? index - 1 : index + 1);
+      this.updateNextActiveIndex(isUpDirection, index);
 
       this.clearTimeout2 = setTimeout(() => {
         this.styles = 'top:0; opacity:1';
         this.scrollDebounce = true;
+        this.focusInputFields();
       }, 20);
     }, 50);
   }
@@ -261,19 +263,100 @@ export default class FormsIndexComponent extends Component {
         (isUpDirection ? 'arrow-up--top-list' : 'arrow-down--top-list');
 
       // activate next page
-      this.updateNextActiveIndex(isUpDirection ? index - 1 : index + 1);
+      this.updateNextActiveIndex(isUpDirection, index);
 
       this.clearTimeout2 = setTimeout(() => {
         this.styles = 'top:0; opacity:1';
         setTimeout(() => {
           this.scrollDebounce = true;
+          this.focusInputFields();
         }, timeoutValue);
       }, 12);
     }, 30);
   };
 
-  updateNextActiveIndex(index) {
-    this.global.rows[index].isActive = true;
+  updateNextActiveIndex(isUpDirection, index) {
+    const nextActivePageIndex = isUpDirection ? index - 1 : index + 1;
+    const currentActivePage = this.global.rows[index];
+
+    // down direction with jumps data
+    if (!isUpDirection && currentActivePage?.jumps?.length) {
+      try {
+        // reset visited child nodes
+        currentActivePage.jumps.forEach((jumpData) => {
+          const nextMatchedQuestion =
+            this.global.rows.filter((d) => {
+              if (d.identifier == jumpData.destination.id) {
+                return d;
+              }
+            }) || [];
+          const nextIndex = nextMatchedQuestion[0].index - 1;
+          this.global.rows[nextIndex].meta.rootJumpIndex = null;
+        });
+
+        for (
+          let jump_index = 0;
+          jump_index < currentActivePage.jumps.length;
+          jump_index++
+        ) {
+          const jumpData = currentActivePage.jumps[jump_index];
+
+          let isConditionMatch = true;
+          for (
+            let c_index = 0;
+            c_index < jumpData.conditions.length;
+            c_index++
+          ) {
+            const condition = jumpData.conditions[c_index];
+
+            for (let index = 0; index < this.global.rows.length; index++) {
+              const question = this.global.rows[index];
+              if (question.identifier == condition.field) {
+                if (question.question_type == 'multiple-choice') {
+                  if (
+                    !question.choices.filter(
+                      (c) => c.value === condition.value && c.selected
+                    ).length
+                  ) {
+                    isConditionMatch = false;
+                    break;
+                  }
+                } else {
+                  if (!(question.value == condition.value)) {
+                    isConditionMatch = false;
+                    break;
+                  }
+                }
+              }
+            }
+            if (!isConditionMatch) break;
+          }
+
+          if (isConditionMatch) {
+            const nextIndex =
+              this.global.rows.filter((d) => {
+                if (d.identifier == jumpData.destination.id) {
+                  return d;
+                }
+              })[0].index - 1;
+            this.global.rows[nextIndex].isActive = true;
+            this.global.rows[nextIndex].meta.rootJumpIndex = index;
+            return;
+          }
+        }
+      } catch (error) {
+        console.error('Error: ', error);
+      }
+    }
+
+    const rootJumpIndex = this.global.rows[index].meta.rootJumpIndex;
+    if (rootJumpIndex != null && isUpDirection) {
+      this.global.rows[rootJumpIndex].isActive = true;
+      return;
+    }
+
+    // default to next page if not meet any conditions
+    this.global.rows[nextActivePageIndex].isActive = true;
   }
 
   //---------------------required field handling-----------------------
@@ -326,5 +409,15 @@ export default class FormsIndexComponent extends Component {
       }
     }
     return isFromValid;
+  }
+
+  focusInputFields() {
+    if (this.clearTimeout3) {
+      clearTimeout(this.clearTimeout3);
+    }
+    this.clearTimeout3 = setTimeout(() => {
+      document.getElementById('textarea_id')?.focus();
+      document.getElementById('input_box_id')?.focus();
+    }, 500);
   }
 }

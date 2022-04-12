@@ -12,7 +12,7 @@ export default class FormsInputComponent extends Component {
 
   @action
   onInitDom() {
-    document.getElementById('input_box_id')?.focus();
+    // document.getElementById('input_box_id')?.focus();
   }
 
   @action
