@@ -18,6 +18,7 @@ class Properties {
   @tracked rowsCount;
   @tracked inValid;
   @tracked placeholder;
+  @tracked rootJumpIndex;
   constructor(args) {
     this.rowsCount = args.rowsCount || 1;
     this.inValid = false;
@@ -26,9 +27,9 @@ class Properties {
       args.question_type === 'text'
         ? 'Geben Sie hier Ihre Antwort ein...'
         : false;
+    this.rootJumpIndex = null;
   }
 }
-
 class Questionnaire {
   @tracked question_type;
   @tracked identifier;
@@ -38,6 +39,7 @@ class Questionnaire {
   @tracked multiple;
   @tracked choices;
   @tracked multiline;
+  @tracked jumps;
 
   // extra fields
   @tracked index;
@@ -57,6 +59,7 @@ class Questionnaire {
       args.choices?.map((d) => {
         return new Choice(d);
       }) || [];
+    this.jumps = args.jumps || [];
 
     this.index = args.index;
     this.value = '';
